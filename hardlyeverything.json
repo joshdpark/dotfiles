@@ -23,7 +23,7 @@
     "dateDismissed": "2019-08-13T16:05:04.153Z",
     "title": "Bloomberg",
     "tags": [
-      "Economics", "News"
+      "Economics News"
     ],
     "duration": 1,
     "interval": "days",
@@ -32,35 +32,151 @@
     "url": "http://bloomberg.com"
   },
   "00b3266b-23d8-49cf-aa17-30298852bcc9": {
-    "id": "00b3266b-23d8-49cf-aa17-30298852bcc9",
-    "content": {},
-    "dateAdded": "2019-08-13T16:04:26.073Z",
-    "dateUpdated": "2019-08-13T16:04:26.073Z",
-    "dateDismissed": "2009-08-13T16:04:26.073Z",
     "title": "Aeon",
     "tags": [
-      "Culture", "Opinion"
+      "culture",
+      "opinions"
     ],
     "duration": 7,
     "interval": "days",
     "visited": 0,
     "timeRange": 20,
-    "url": "http://aeon.co"
+    "url": "http://aeon.co",
+    "id": "00b3266b-23d8-49cf-aa17-30298852bcc9",
+    "content": {},
+    "dateAdded": "2019-08-13T16:04:26.073Z",
+    "dateUpdated": "2019-08-13T16:52:47.992Z",
+    "dateDismissed": "2009-08-13T16:04:26.073Z"
   },
   "ddaa8261-52ab-4e81-8300-234698fc5159": {
     "title": "Foreign Policy",
     "tags": [
       "News"
     ],
-    "duration": 2,
+    "duration": 4,
     "interval": "days",
     "visited": 0,
-    "timeRange": 3,
+    "timeRange": 8,
     "url": "http://foreignpolicy.com",
     "id": "ddaa8261-52ab-4e81-8300-234698fc5159",
     "content": {},
     "dateAdded": "2019-08-13T16:04:51.481Z",
-    "dateUpdated": "2019-08-13T16:06:11.118Z",
+    "dateUpdated": "2019-08-13T16:52:38.120Z",
     "dateDismissed": "2009-08-13T16:04:51.481Z"
+  },
+  "5a76007c-c1c6-4e3c-a717-bfb00a330fa7": {
+    "id": "5a76007c-c1c6-4e3c-a717-bfb00a330fa7",
+    "content": {},
+    "dateAdded": "2019-08-13T16:31:58.972Z",
+    "dateUpdated": "2019-08-13T16:36:30.960Z",
+    "dateDismissed": "2019-08-13T16:36:30.961Z",
+    "title": "Jacobin",
+    "tags": [
+      "Opinion",
+      "Policy"
+    ],
+    "duration": 7,
+    "interval": "days",
+    "visited": 1,
+    "timeRange": 13,
+    "url": "https://jacobinmag.com"
+  },
+  "62df8cb2-b2ef-41c1-a821-8dd1b778f71f": {
+    "title": "The Prepared",
+    "tags": [
+      "design"
+    ],
+    "duration": 7,
+    "interval": "days",
+    "visited": 0,
+    "timeRange": 20,
+    "url": "https://us3.campaign-archive.com/home/?id=36a748e46b&u=2e2c86e49a5f6d1fd1ab7ce70",
+    "id": "62df8cb2-b2ef-41c1-a821-8dd1b778f71f",
+    "content": {},
+    "dateAdded": "2019-08-13T16:35:29.403Z",
+    "dateUpdated": "2019-08-13T16:52:58.790Z",
+    "dateDismissed": "2009-08-13T16:35:29.403Z"
+  },
+  "ee3d277f-edcc-4882-8bd1-ab7e1490c3f5": {
+    "id": "ee3d277f-edcc-4882-8bd1-ab7e1490c3f5",
+    "content": {},
+    "dateAdded": "2019-08-13T16:36:03.371Z",
+    "dateUpdated": "2019-08-13T16:36:03.371Z",
+    "dateDismissed": "2009-08-13T16:36:03.371Z",
+    "title": "Longform",
+    "tags": [
+      "journalism"
+    ],
+    "duration": 7,
+    "interval": "days",
+    "visited": 0,
+    "timeRange": 20,
+    "url": "https://longform.org"
+  },
+  "4e65bc5d-8929-41b4-a430-427cb8d76fe7": {
+    "title": "Nautilus",
+    "tags": [
+      "science"
+    ],
+    "duration": 7,
+    "interval": "days",
+    "visited": 0,
+    "timeRange": 20,
+    "url": "http://nautil.us",
+    "id": "4e65bc5d-8929-41b4-a430-427cb8d76fe7",
+    "content": {},
+    "dateAdded": "2019-08-13T16:37:43.379Z",
+    "dateUpdated": "2019-08-13T16:37:47.836Z",
+    "dateDismissed": "2009-08-13T16:37:43.379Z"
+  },
+  "83ad3456-a78f-4b94-b133-7e55366f3b27": {
+    "id": "83ad3456-a78f-4b94-b133-7e55366f3b27",
+    "content": {},
+    "dateAdded": "2019-08-13T16:38:34.131Z",
+    "dateUpdated": "2019-08-13T16:38:34.131Z",
+    "dateDismissed": "2009-08-13T16:38:34.131Z",
+    "title": "Quanta",
+    "tags": [
+      "science"
+    ],
+    "duration": 7,
+    "interval": "days",
+    "visited": 0,
+    "timeRange": 20,
+    "url": "https://quantamagazine.org"
+  },
+  "b448ccc3-20a6-452c-88c7-c5b6e1b37781": {
+    "id": "b448ccc3-20a6-452c-88c7-c5b6e1b37781",
+    "content": {},
+    "dateAdded": "2019-08-13T16:50:17.358Z",
+    "dateUpdated": "2019-08-13T16:50:17.358Z",
+    "dateDismissed": "2009-08-13T16:50:17.358Z",
+    "title": "The Upshot",
+    "tags": [
+      "journalism",
+      "economics"
+    ],
+    "duration": 7,
+    "interval": "days",
+    "visited": 0,
+    "timeRange": 20,
+    "url": "https://nytimes.com/section/upshot"
+  },
+  "6ee5b05a-25fa-483c-b572-02701dbb242f": {
+    "title": "Curbed",
+    "tags": [
+      "design",
+      "architecture"
+    ],
+    "duration": 7,
+    "interval": "days",
+    "visited": 0,
+    "timeRange": 20,
+    "url": "https://curbed.com",
+    "id": "6ee5b05a-25fa-483c-b572-02701dbb242f",
+    "content": {},
+    "dateAdded": "2019-08-13T16:51:26.016Z",
+    "dateUpdated": "2019-08-13T16:52:23.328Z",
+    "dateDismissed": "2009-08-13T16:51:26.016Z"
   }
 }
