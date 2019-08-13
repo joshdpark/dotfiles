@@ -1,0 +1,66 @@
+{
+  "e923ea2f-1b06-4282-abc9-3903c16c4b81": {
+    "id": "e923ea2f-1b06-4282-abc9-3903c16c4b81",
+    "content": {},
+    "dateAdded": "2019-08-13T16:03:07.298Z",
+    "dateUpdated": "2019-08-13T16:03:13.606Z",
+    "dateDismissed": "2019-08-13T16:03:13.606Z",
+    "title": "The Outline",
+    "tags": [
+      "Opinion"
+    ],
+    "duration": 7,
+    "interval": "days",
+    "visited": 1,
+    "timeRange": 13,
+    "url": "http://theoutline.com"
+  },
+  "65ed9f33-5adf-41e1-9ae4-6e21d7c771a9": {
+    "id": "65ed9f33-5adf-41e1-9ae4-6e21d7c771a9",
+    "content": {},
+    "dateAdded": "2019-08-13T16:03:58.642Z",
+    "dateUpdated": "2019-08-13T16:05:04.153Z",
+    "dateDismissed": "2019-08-13T16:05:04.153Z",
+    "title": "Bloomberg",
+    "tags": [
+      "Economics", "News"
+    ],
+    "duration": 1,
+    "interval": "days",
+    "visited": 1,
+    "timeRange": 0,
+    "url": "http://bloomberg.com"
+  },
+  "00b3266b-23d8-49cf-aa17-30298852bcc9": {
+    "id": "00b3266b-23d8-49cf-aa17-30298852bcc9",
+    "content": {},
+    "dateAdded": "2019-08-13T16:04:26.073Z",
+    "dateUpdated": "2019-08-13T16:04:26.073Z",
+    "dateDismissed": "2009-08-13T16:04:26.073Z",
+    "title": "Aeon",
+    "tags": [
+      "Culture", "Opinion"
+    ],
+    "duration": 7,
+    "interval": "days",
+    "visited": 0,
+    "timeRange": 20,
+    "url": "http://aeon.co"
+  },
+  "ddaa8261-52ab-4e81-8300-234698fc5159": {
+    "title": "Foreign Policy",
+    "tags": [
+      "News"
+    ],
+    "duration": 2,
+    "interval": "days",
+    "visited": 0,
+    "timeRange": 3,
+    "url": "http://foreignpolicy.com",
+    "id": "ddaa8261-52ab-4e81-8300-234698fc5159",
+    "content": {},
+    "dateAdded": "2019-08-13T16:04:51.481Z",
+    "dateUpdated": "2019-08-13T16:06:11.118Z",
+    "dateDismissed": "2009-08-13T16:04:51.481Z"
+  }
+}
