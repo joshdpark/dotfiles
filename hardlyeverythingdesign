@@ -1,0 +1,33 @@
+{
+  "invert": false,
+  "newTab": true,
+  "autoDismiss": true,
+  "entropy": 0,
+  "css": "\n.design-container {\n  color: var(--foreground);\n  font-family: var(--font-family);\n  font-weight: var(--font-weight);\n  font-style: var(--font-style);\n  font-size: var(--font-size);\n  text-transform: var(--font-uppercase);\n  hyphens: var(--font-hyphenate);\n  line-height: 1.2;\n\n  --gutter:\n    calc(var(--spacing) * 0.8)\n    var(--spacing);\n}\n",
+  "colorBg": {
+    "a": 1,
+    "r": 0,
+    "g": 0,
+    "b": 255
+  },
+  "colorText": {
+    "a": 1,
+    "r": 255,
+    "g": 255,
+    "b": 255
+  },
+  "font": {
+    "author": {
+      "name": "Love Letters",
+      "url": "http://love-letters.be"
+    },
+    "name": "Reglo",
+    "key": "reglo",
+    "host": "local",
+    "value": "Reglo"
+  },
+  "uppercase": true,
+  "hyphenate": false,
+  "scale": 30,
+  "spacing": 40
+}
