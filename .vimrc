@@ -1,27 +1,35 @@
 " Call Plugins
 call plug#begin('~/.vim/plugged')
-Plug 'jalvesaq/Nvim-R'
-Plug 'junegunn/vim-plug'
-Plug 'tpope/vim-fugitive'
-Plug 'junegunn/gv.vim'
-Plug 'junegunn/seoul256.vim'
-Plug 'tpope/vim-sensible'
-Plug 'scrooloose/nerdcommenter'
+Plug 'junegunn/vim-plug'       " Plugin Manager
+Plug 'junegunn/gv.vim'         " a git commit browser
+Plug 'junegunn/goyo.vim'       " distractioness vim
+Plug 'junegunn/seoul256.vim'   " vim colorscheme
+Plug 'junegunn/fzf.vim'        " fuzzy finder vim integration
+Plug 'junegunn/vim-easy-align' " align
+Plug 'tpope/vim-fugitive'      " git in vim
+Plug 'tpope/vim-commentary'    " comment out lines
+Plug 'tpope/vim-surround'      " change/add surroudings
+" 
 Plug 'martinda/Jenkinsfile-vim-syntax'
+Plug 'jalvesaq/Nvim-R'
 Plug 'gaalcaras/ncm-R'
-" Vim 8 only
-if !has('nvim')
-    Plug 'roxma/vim-hug-neovim-rpc'
-endif
+Plug 'vimwiki/vimwiki'
 call plug#end()
 
-" Nvim-R Settings
-let maplocalleader = ','
+let maplocalleader = ","
+let mapleader = ","
+
+" EasyAlign
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 " set global settings
 set number
 set ruler
-set autoindent
+set nocompatible
+filetype plugin on
 syntax on
 set showcmd             " show (partial) command in status line
 
@@ -33,19 +41,10 @@ set path+=**
 set splitright
 set splitbelow
 
-" Easier split navigation
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
 " set seoul256 background color
-let g:seoul256_background=236
-let g:seoul256_srgb = 1
 colo seoul256
 
 "Automatically opens up explorer at the side
-"autocmd vimenter * 10Vexplore
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0
 
