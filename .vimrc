@@ -1,4 +1,4 @@
-" Vim 8 defalts
+" Vim 8 defaults
 silent! source $VIMRUNTIME/defaults.vim
 
 
@@ -24,12 +24,23 @@ Plug 'michal-h21/vim-zettel'
                 \ 'auto_toc': 1, 'syntax': 'markdown', 'ext': '.md'}
                 \]
     let g:vimwiki_use_mouse = 1
+    let g:zettel_fzf_command = "rg --column --line-number --ignore-case --no-heading --color=always"
 Plug 'jalvesaq/Nvim-R'
 Plug 'sirver/UltiSnips'
+    let g:UltiSnipsExpandTrigger = '<tab>'
+    let g:UltiSnipsJumpForwardTrigger = '<tab>'
+    let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+Plug 'lervag/vimtex'
+    let g:tex_flavor='latex'
+    let g:vimtex_view_method='zathura'
+    let g:vimtex_quickfix_mode=0
+    set conceallevel=1
+    let g:tex_conceal='abdmg'
+    let g:vimtex_quickfix_mode=0
 call plug#end()
 
 packadd! matchit
-let g:seoul256_background = 239
+" let g:seoul256_background = 239
 let g:seoul256_srgb = 1
 colo seoul256
 
@@ -49,6 +60,7 @@ set relativenumber
 set smartindent
 set incsearch
 set ignorecase
+setlocal spell
 
 " Search down into subfolders
 set path+=**
@@ -62,7 +74,7 @@ let g:netrw_liststyle = 3
 let g:netrw_banner = 0
 
 set expandtab                  " enter spaces when tab is pressed
-set textwidth=120              " break lines when line length increases
+set textwidth=80               " break lines when line length increases
 set tabstop=4                  " use 4 spaces to represent tab
 set softtabstop=4
 set shiftwidth=4               " number of spaces to use for auto indent
