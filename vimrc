@@ -1,6 +1,11 @@
 " Vim 8 defaults
 silent! source $VIMRUNTIME/defaults.vim
 
+" Mappings
+inoremap jk <esc>
+xnoremap jk <esc>
+let maplocalleader=","
+let mapleade=","
 
 " Call Plugins
 call plug#begin('~/.vim/plugged')
@@ -36,14 +41,13 @@ Plug 'lervag/vimtex'
     set conceallevel=1
     let g:tex_conceal='abdmg'
     let g:vimtex_compiler_method = 'tectonic'
-    " let g:vimtex_compiler_tectonic = {
-    "     \ 'build_dir' : '',
-    "     \ 'options' : [
-    "     \   '--keep-logs',
-    "     \   '--synctex'
-    "     \ ],
-    "     \}
 Plug 'SirVer/ultisnips'
+Plug 'michal-h21/vim-zettel' 
+    let g:vimwiki_list = [
+                \{'name':'zettelkasten', 'path': '~/sync/zettel', 'auto_tags': 1,
+                \ 'auto_toc': 1, 'syntax': 'markdown', 'ext': '.md'}
+                \]
+    let g:vimwiki_use_mouse = 1
 call plug#end()
 
 packadd! matchit
