@@ -5,7 +5,7 @@ silent! source $VIMRUNTIME/defaults.vim
 inoremap jk <esc>
 xnoremap jk <esc>
 let maplocalleader=","
-let mapleade=","
+let mapleader=","
 
 " Call Plugins
 call plug#begin('~/.vim/plugged')
@@ -42,12 +42,11 @@ Plug 'lervag/vimtex'
     let g:tex_conceal='abdmg'
     let g:vimtex_compiler_method = 'tectonic'
 Plug 'SirVer/ultisnips'
+Plug 'vimwiki/vimwiki'
 Plug 'michal-h21/vim-zettel' 
-    let g:vimwiki_list = [
-                \{'name':'zettelkasten', 'path': '~/sync/zettel', 'auto_tags': 1,
-                \ 'auto_toc': 1, 'syntax': 'markdown', 'ext': '.md'}
-                \]
+    let g:vimwiki_list = [{'path':'~/sync/zettel/', 'auto_tags': 1, 'auto_toc': 1, 'syntax': 'markdown', 'ext': '.md'}]
     let g:vimwiki_use_mouse = 1
+    let g:zettel_fzf_command = "rg --column --line-number --ignore-case --no-heading --color=always"
 call plug#end()
 
 packadd! matchit
