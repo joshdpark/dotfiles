@@ -15,9 +15,20 @@ Plug 'junegunn/goyo.vim'       " distractioness vim
 Plug 'junegunn/seoul256.vim'   " vim colorscheme
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'        " fuzzy finder vim integration
+    " Mapping selecting mappings
+    nmap <leader><tab> <plug>(fzf-maps-n)
+    xmap <leader><tab> <plug>(fzf-maps-x)
+    omap <leader><tab> <plug>(fzf-maps-o)
+    " Insert mode completion
+    imap <c-x><c-k> <plug>(fzf-complete-word)
+    imap <c-x><c-f> <plug>(fzf-complete-path)
+    imap <c-x><c-l> <plug>(fzf-complete-line)
+    let g:fzf_tags_command = 'ctags -R'
+    let g:fzf_layout = { 'down': '40%' }
 Plug 'junegunn/vim-easy-align' " align
     vmap <Enter> <Plug>(EasyAlign)
     nmap ga <Plug>(EasyAlign)
+Plug 'junegunn/vim-peekaboo'
 Plug 'tpope/vim-fugitive'      " git in vim
 Plug 'tpope/vim-commentary'    " comment out lines
 Plug 'tpope/vim-surround'      " change/add surroudings
@@ -28,9 +39,8 @@ Plug 'sillybun/vim-repl'
                 \    'python': ['ipython'],
                 \    'julia': ['julia'],
                 \    'default': ['zsh']
-                \    }
+                \    } 
     let g:repl_ipython_version = '7.7'
-    " let g:repl_python_automerge = 1
 Plug 'JuliaEditorSupport/julia-vim'
     let g:latex_to_unicode_auto = 1
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -51,6 +61,9 @@ call plug#end()
 
 packadd! matchit
 colo seoul256
+autocmd Filetype python nnoremap <F12> <Esc>:REPLDebugStopAtCurrentLine<Cr>
+autocmd Filetype python nnoremap <F10> <Esc>:REPLPDBN<Cr>
+autocmd Filetype python nnoremap <F11> <Esc>:REPLPDBS<Cr>
 
 " set global settings alongside defaults
 set number relativenumber
