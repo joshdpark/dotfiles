@@ -32,15 +32,10 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'tpope/vim-fugitive'      " git in vim
 Plug 'tpope/vim-commentary'    " comment out lines
 Plug 'tpope/vim-surround'      " change/add surroudings
-Plug 'sillybun/vim-repl'
-    nnoremap <leader>r :REPLToggle<CR>
-    let g:repl_position = 3
-    let g:repl_program = {
-                \    'python': ['ipython'],
-                \    'julia': ['julia'],
-                \    'default': ['zsh']
-                \    } 
-    let g:repl_ipython_version = '7.7'
+Plug 'jpalardy/vim-slime'
+    let g:slime_target = "vimterminal"
+    let g:slime_vimterminal_config = { "vertical": 1, "term_finish": "close" }
+    let g:slime_python_ipython = 1
 Plug 'JuliaEditorSupport/julia-vim'
     let g:latex_to_unicode_auto = 1
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -48,7 +43,6 @@ Plug 'lervag/vimtex'
     let g:tex_flavor = 'latex'
     let g:vimtex_view_method='zathura'
     let g:vimtex_quickfix_mode=0
-    set conceallevel=1
     let g:tex_conceal='abdmg'
     let g:vimtex_compiler_method = 'tectonic'
 Plug 'SirVer/ultisnips'
@@ -59,11 +53,13 @@ Plug 'michal-h21/vim-zettel'
     let g:zettel_fzf_command = "rg --column --line-number --ignore-case --no-heading --color=always"
 call plug#end()
 
+set conceallevel=1 " vimtex
 packadd! matchit
 colo seoul256
-autocmd Filetype python nnoremap <F12> <Esc>:REPLDebugStopAtCurrentLine<Cr>
-autocmd Filetype python nnoremap <F10> <Esc>:REPLPDBN<Cr>
-autocmd Filetype python nnoremap <F11> <Esc>:REPLPDBS<Cr>
+autocmd FileType python let g:slime_vimterminal_cmd="ipython"
+autocmd FileType r setlocal shiftwidth=2 tabstop=2 softtabstop=2 
+autocmd FileType r let g:slime_vimterminal_cmd="R"
+autocmd FileType julia let g:slime_vimterminal_cmd="julia"
 
 " set global settings alongside defaults
 set number relativenumber
@@ -73,14 +69,14 @@ augroup numbertoggle
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
-set smartindent
+set lazyredraw
+set undofile
 set incsearch
 set ignorecase
 setlocal spell
 set wildmenu
 set scrolloff=5
 set tags=./tags;/
-filetype plugin indent on
 
 " Search down into subfolders
 set path+=**
@@ -98,6 +94,7 @@ set textwidth=80               " break lines when line length increases
 set tabstop=4                  " use 4 spaces to represent tab
 set softtabstop=4
 set shiftwidth=4               " number of spaces to use for auto indent
+set smartindent
 set autoindent                 " copy indent from current line when starting a newline
 set backspace=indent,eol,start " make backspaces more powerfull
 
@@ -179,7 +176,7 @@ function! s:show_documentation()
 endfunction
 
 " Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
