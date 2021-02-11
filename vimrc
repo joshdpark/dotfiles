@@ -2,8 +2,6 @@
 silent! source $VIMRUNTIME/defaults.vim
 
 " Mappings
-inoremap jk <esc>
-xnoremap jk <esc>
 let maplocalleader=","
 let mapleader=","
 
@@ -59,7 +57,7 @@ colo seoul256
 autocmd FileType python let g:slime_vimterminal_cmd="ipython"
 autocmd FileType r setlocal shiftwidth=2 tabstop=2 softtabstop=2 
 autocmd FileType r let g:slime_vimterminal_cmd="R"
-autocmd FileType julia let g:slime_vimterminal_cmd="julia"
+autocmd FileType julia let g:slime_vimterminal_cmd="julia --project=@."
 
 " set global settings alongside defaults
 set number relativenumber
@@ -97,6 +95,21 @@ set shiftwidth=4               " number of spaces to use for auto indent
 set smartindent
 set autoindent                 " copy indent from current line when starting a newline
 set backspace=indent,eol,start " make backspaces more powerfull
+
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+" Use <leader>x for convert visual selected code to snippet
+xmap <leader>x  <Plug>(coc-convert-snippet)
 
 "Coc Recommended configuration
 " TextEdit might fail if hidden is not set.
@@ -176,7 +189,7 @@ function! s:show_documentation()
 endfunction
 
 " Highlight the symbol and its references when holding the cursor.
-" autocmd CursorHold * silent call CocActionAsync('highlight')
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
@@ -238,7 +251,7 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
-" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
 " Show all diagnostics.
