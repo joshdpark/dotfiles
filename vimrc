@@ -57,8 +57,13 @@ colo seoul256
 autocmd FileType python let g:slime_vimterminal_cmd="ipython"
 autocmd FileType r setlocal shiftwidth=2 tabstop=2 softtabstop=2 
 autocmd FileType r let g:slime_vimterminal_cmd="R"
+<<<<<<< HEAD
 autocmd FileType julia let g:slime_vimterminal_cmd="julia --project=@."
 autocmd FileType r imap <c-m> %>%
+=======
+autocmd FileType r imap <c-m> %>%
+autocmd FileType julia let g:slime_vimterminal_cmd="julia"
+>>>>>>> f2cd14f0d3a74aa03d66a23b4343c492f0c44330
 
 " set global settings alongside defaults
 set number relativenumber
