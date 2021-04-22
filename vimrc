@@ -46,9 +46,11 @@ Plug 'lervag/vimtex'
 Plug 'SirVer/ultisnips'
 Plug 'vimwiki/vimwiki'
 Plug 'michal-h21/vim-zettel' 
-    let g:vimwiki_list = [{'path':'~/sync/zettel/', 'auto_tags': 1, 'auto_toc': 1, 'syntax': 'markdown', 'ext': '.md'}]
+    let g:vimwiki_list = [{'path':'~/usps/notes', 'auto_tags': 1, 'auto_toc': 1,
+                \ 'syntax':'markdown', 'ext':'.md'}, {"path":"~/journal"}]
     let g:vimwiki_use_mouse = 1
     let g:zettel_fzf_command = "rg --column --line-number --ignore-case --no-heading --color=always"
+Plug 'skywind3000/asyncrun.vim'
 call plug#end()
 
 set conceallevel=1 " vimtex
@@ -56,15 +58,12 @@ packadd! matchit
 colo seoul256
 autocmd FileType python let g:slime_vimterminal_cmd="ipython"
 autocmd FileType r setlocal shiftwidth=2 tabstop=2 softtabstop=2 
-autocmd FileType r let g:slime_vimterminal_cmd="R"
-<<<<<<< HEAD
 autocmd FileType julia let g:slime_vimterminal_cmd="julia --project=@."
 autocmd FileType r imap <c-m> %>%
-=======
-autocmd FileType r imap <c-m> %>%
 autocmd FileType julia let g:slime_vimterminal_cmd="julia"
->>>>>>> f2cd14f0d3a74aa03d66a23b4343c492f0c44330
-
+augroup vimrc    
+    autocmd QuickFixCmdPost * botright copen 8
+augroup END
 " set global settings alongside defaults
 set number relativenumber
 " switch back and forth between relative and norelative depending on focus
