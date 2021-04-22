@@ -43,12 +43,12 @@ Plug 'lervag/vimtex'
     let g:vimtex_quickfix_mode=0
     let g:tex_conceal='abdmg'
     let g:vimtex_compiler_method = 'tectonic'
-Plug 'SirVer/ultisnips'
 Plug 'vimwiki/vimwiki'
 Plug 'michal-h21/vim-zettel' 
     let g:vimwiki_list = [{'path':'~/sync/zettel/', 'auto_tags': 1, 'auto_toc': 1, 'syntax': 'markdown', 'ext': '.md'}]
     let g:vimwiki_use_mouse = 1
     let g:zettel_fzf_command = "rg --column --line-number --ignore-case --no-heading --color=always"
+Plug 'skywind3000/asyncrun.vim'
 call plug#end()
 
 set conceallevel=1 " vimtex
@@ -56,9 +56,12 @@ packadd! matchit
 colo seoul256
 autocmd FileType python let g:slime_vimterminal_cmd="ipython"
 autocmd FileType r setlocal shiftwidth=2 tabstop=2 softtabstop=2 
-autocmd FileType r let g:slime_vimterminal_cmd="R"
 autocmd FileType julia let g:slime_vimterminal_cmd="julia --project=@."
-
+autocmd FileType r imap <c-m> %>%
+autocmd FileType julia let g:slime_vimterminal_cmd="julia"
+augroup vimrc    
+    autocmd QuickFixCmdPost * botright copen 8
+augroup END
 " set global settings alongside defaults
 set number relativenumber
 " switch back and forth between relative and norelative depending on focus
@@ -137,20 +140,6 @@ if has("patch-8.1.1564")
 else
   set signcolumn=yes
 endif
-
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
 
 " Use <c-space> to trigger completion.
 if has('nvim')
