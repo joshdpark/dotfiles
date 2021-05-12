@@ -11,6 +11,7 @@ Plug 'junegunn/vim-plug'       " Plugin Manager
 Plug 'junegunn/gv.vim'         " a git commit browser
 Plug 'junegunn/goyo.vim'       " distractioness vim
 Plug 'junegunn/seoul256.vim'   " vim colorscheme
+Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'        " fuzzy finder vim integration
     " Mapping selecting mappings
@@ -23,6 +24,7 @@ Plug 'junegunn/fzf.vim'        " fuzzy finder vim integration
     imap <c-x><c-l> <plug>(fzf-complete-line)
     let g:fzf_tags_command = 'ctags -R'
     let g:fzf_layout = { 'down': '40%' }
+    let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 Plug 'junegunn/vim-easy-align' " align
     vmap <Enter> <Plug>(EasyAlign)
     nmap ga <Plug>(EasyAlign)
@@ -37,6 +39,8 @@ Plug 'jpalardy/vim-slime'
 Plug 'JuliaEditorSupport/julia-vim'
     let g:latex_to_unicode_auto = 1
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'sheerun/vim-polyglot'
+Plug 'honza/vim-snippets'
 Plug 'lervag/vimtex'
     let g:tex_flavor = 'latex'
     let g:vimtex_view_method='zathura'
@@ -51,6 +55,11 @@ Plug 'michal-h21/vim-zettel'
 Plug 'skywind3000/asyncrun.vim'
 call plug#end()
 
+if exists('+termguicolors')
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    set termguicolors
+endif
 set conceallevel=1 " vimtex
 packadd! matchit
 colo seoul256
