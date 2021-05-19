@@ -11,6 +11,7 @@ Plug 'junegunn/vim-plug'       " Plugin Manager
 Plug 'junegunn/gv.vim'         " a git commit browser
 Plug 'junegunn/goyo.vim'       " distractioness vim
 Plug 'junegunn/seoul256.vim'   " vim colorscheme
+Plug 'ayu-theme/ayu-vim'
 Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'        " fuzzy finder vim integration
@@ -55,14 +56,15 @@ Plug 'michal-h21/vim-zettel'
 Plug 'skywind3000/asyncrun.vim'
 call plug#end()
 
-if exists('+termguicolors')
+if has('termguicolors')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
     set termguicolors
+    let ayucolor="mirage"
+    colorscheme ayu
 endif
 set conceallevel=1 " vimtex
 packadd! matchit
-colo seoul256
 autocmd FileType python let g:slime_vimterminal_cmd="ipython"
 autocmd FileType r setlocal shiftwidth=2 tabstop=2 softtabstop=2 
 autocmd FileType r let g:slime_vimterminal_cmd="R"
@@ -79,8 +81,6 @@ set lazyredraw
 set undofile
 set incsearch
 set ignorecase
-setlocal spell
-set wildmenu
 set scrolloff=5
 set tags=./tags;/
 
