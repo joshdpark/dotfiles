@@ -1,40 +1,35 @@
-" Mappings
 let maplocalleader=","
 let mapleader=","
 
-" Call Plugins
-call plug#begin('~/.vim/plugged')
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-Plug 'nvim-treesitter/playground'
-Plug 'neovim/nvim-lspconfig' " LSP config
-Plug 'hrsh7th/nvim-compe' " nvim autocompletion
-Plug 'junegunn/vim-plug'       " Plugin Manager
-Plug 'junegunn/gv.vim'         " a git commit browser
-Plug 'junegunn/goyo.vim'       " distractioness vim
-Plug 'junegunn/seoul256.vim'   " vim colorscheme
-Plug 'ayu-theme/ayu-vim'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'        " fuzzy finder vim integration
-    " Mapping selecting mappings
-    nmap <leader><tab> <plug>(fzf-maps-n)
-    xmap <leader><tab> <plug>(fzf-maps-x)
-    omap <leader><tab> <plug>(fzf-maps-o)
-    " Insert mode completion
-    imap <c-x><c-k> <plug>(fzf-complete-word)
-    imap <c-x><c-f> <plug>(fzf-complete-path)
-    imap <c-x><c-l> <plug>(fzf-complete-line)
-    let g:fzf_tags_command = 'ctags -R'
-    let g:fzf_layout = { 'down': '40%' }
-    let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
-Plug 'junegunn/vim-easy-align' " align
-    vmap <Enter> <Plug>(EasyAlign)
-    nmap ga <Plug>(EasyAlign)
-Plug 'junegunn/vim-peekaboo'
-Plug 'tpope/vim-fugitive'      " git in vim
-Plug 'tpope/vim-commentary'    " comment out lines
-Plug 'tpope/vim-surround'      " change/add surroudings
-Plug 'JuliaEditorSupport/julia-vim'
-    let g:latex_to_unicode_auto = 1
+call plug#begin('~/.vim/plugged') " Call Plugins
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
+    Plug 'nvim-treesitter/playground'
+    Plug 'neovim/nvim-lspconfig' " LSP config
+    Plug 'hrsh7th/nvim-compe' " nvim autocompletion
+    Plug 'hrsh7th/vim-vsnip' " nvim snippets
+    Plug 'rafamadriz/friendly-snippets' " collection of snippets
+    Plug 'hkupty/iron.nvim' " repl support
+    Plug 'junegunn/vim-plug'       " Plugin Manager
+    Plug 'junegunn/gv.vim'         " a git commit browser
+    Plug 'junegunn/goyo.vim'       " distractioness vim
+    Plug 'junegunn/seoul256.vim'   " vim colorscheme
+    Plug 'ayu-theme/ayu-vim'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'        " fuzzy finder vim integration
+        let g:fzf_tags_command = 'ctags -R'
+        let g:fzf_layout = { 'down': '40%' }
+        let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+    Plug 'junegunn/vim-easy-align' " align
+        vmap <Enter> <Plug>(EasyAlign)
+        nmap ga <Plug>(EasyAlign)
+    Plug 'junegunn/vim-peekaboo'
+    Plug 'tpope/vim-fugitive'      " git in vim
+    Plug 'tpope/vim-commentary'    " comment out lines
+    Plug 'tpope/vim-surround' " change/add surroudings
+    Plug 'JuliaEditorSupport/julia-vim'
+        let g:latex_to_unicode_auto = 1
+    Plug 'skywind3000/asyncrun.vim'
+    Plug 'mattn/emmet-vim'
 call plug#end()
 
 if has('termguicolors')
@@ -43,15 +38,12 @@ if has('termguicolors')
     colorscheme ayu
 endif
 
-set conceallevel=1 " vimtex
-autocmd FileType python let g:slime_vimterminal_cmd="ipython"
-autocmd FileType r setlocal shiftwidth=2 tabstop=2 softtabstop=2 
+set conceallevel=1                                               " vimtex
+autocmd FileType r setlocal shiftwidth=2 tabstop=2 softtabstop=2 " R shift to two spaces
 autocmd FileType r imap <c-m> %>%
 
-" set global settings alongside defaults
-set number relativenumber
-" switch back and forth between relative and norelative depending on focus
-augroup numbertoggle
+set number relativenumber " set global settings alongside defaults
+augroup numbertoggle      " switch between relative and norelative depending on focus
   autocmd!
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
@@ -60,24 +52,41 @@ set lazyredraw
 set undofile
 set incsearch
 set scrolloff=5
-set tags=./tags;/
 
-" Search down into subfolders
-set path+=**
-
-" More natural split openings
-set splitright
+set path+=**                     " Search down into subfolders
+set splitright                   " More natural split openings
 set splitbelow
-
-"Automatically opens up explorer at the side
-let g:netrw_liststyle = 3
+let g:netrw_liststyle = 3        " Automatically opens up explorer at the side
 let g:netrw_banner = 0
 
 set expandtab                  " enter spaces when tab is pressed
 set textwidth=80               " break lines when line length increases
 set tabstop=4                  " use 4 spaces to represent tab
 set softtabstop=4
-set shiftwidth=4               " number of spaces to use for auto indent
+set shiftwidth=4                 " number of spaces to use for auto indent
+
+set completeopt=menuone,noselect " set completion for nvim-compe
+
+" use Q to close out of buffers
+map Q <C-w>c
+
+" nvim-compe
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+
+" NOTE: You can use other key to expand snippet.
+
+" vsnip
+imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+" Jump forward or backward
+imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
 
 
 lua <<EOF
@@ -92,6 +101,8 @@ require'lspconfig'.pyright.setup{}
 require'lspconfig'.julials.setup{}
 require'lspconfig'.r_language_server.setup{}
 require'lspconfig'.pylsp.setup{}
+require'lspconfig'.tsserver.setup{}
+require'lspconfig'.texlab.setup{}
 
 local nvim_lsp = require('lspconfig')
 
@@ -156,11 +167,22 @@ require'compe'.setup {
     ultisnips = true;
   };
 }
-vim.o.completeopt = "menuone,noselect"
+
+local iron = require('iron')
+
+iron.core.add_repl_definitions {
+  python = {
+    mycustom = {
+      command = {"mycmd"}
+    }
+  },
+}
+
+iron.core.set_config {
+  preferred = {
+    python = "ipython",
+  },
+  repl_open_cmd = "botright vertical split"
+}
 EOF
-inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <CR>      compe#confirm('<CR>')
-inoremap <silent><expr> <C-e>     compe#close('<C-e>')
-inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
-inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 
