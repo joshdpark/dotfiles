@@ -1,8 +1,14 @@
 let maplocalleader=","
 let mapleader=","
 
-call plug#begin('~/.vim/plugged') " Call Plugins
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs / https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+" Call Plugins
+call plug#begin('~/.vim/plugged')
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
     Plug 'nvim-treesitter/playground'
     Plug 'neovim/nvim-lspconfig' " LSP config
     Plug 'hrsh7th/nvim-compe' " nvim autocompletion
@@ -25,7 +31,7 @@ call plug#begin('~/.vim/plugged') " Call Plugins
     Plug 'junegunn/vim-peekaboo'
     Plug 'tpope/vim-fugitive'      " git in vim
     Plug 'tpope/vim-commentary'    " comment out lines
-    Plug 'tpope/vim-surround' " change/add surroudings
+    Plug 'tpope/vim-surround'      " change/add surroudings
     Plug 'JuliaEditorSupport/julia-vim'
         let g:latex_to_unicode_auto = 1
     Plug 'skywind3000/asyncrun.vim'
@@ -38,8 +44,9 @@ if has('termguicolors')
     colorscheme ayu
 endif
 
-set conceallevel=1                                               " vimtex
-autocmd FileType r setlocal shiftwidth=2 tabstop=2 softtabstop=2 " R shift to two spaces
+set conceallevel=1 " vimtex
+autocmd FileType python let g:slime_vimterminal_cmd="ipython"
+autocmd FileType r setlocal shiftwidth=2 tabstop=2 softtabstop=2 
 autocmd FileType r imap <c-m> %>%
 
 set number relativenumber " set global settings alongside defaults
@@ -63,7 +70,7 @@ set expandtab                  " enter spaces when tab is pressed
 set textwidth=80               " break lines when line length increases
 set tabstop=4                  " use 4 spaces to represent tab
 set softtabstop=4
-set shiftwidth=4                 " number of spaces to use for auto indent
+set shiftwidth=4               " number of spaces to use for auto indent
 
 set completeopt=menuone,noselect " set completion for nvim-compe
 
@@ -100,7 +107,7 @@ require'nvim-treesitter.configs'.setup {
 require'lspconfig'.pyright.setup{}
 require'lspconfig'.julials.setup{}
 require'lspconfig'.r_language_server.setup{}
-require'lspconfig'.pylsp.setup{}
+require'lspconfig'.jedi_language_server.setup{}
 require'lspconfig'.tsserver.setup{}
 require'lspconfig'.texlab.setup{}
 
@@ -138,7 +145,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { "pyright", "julials", "tsserver" }
+local servers = { "jedi_language_server", "julials", "tsserver", "r_language_server" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
 end
