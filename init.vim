@@ -8,35 +8,40 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 " Call Plugins
 call plug#begin('~/.vim/plugged')
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-    Plug 'nvim-treesitter/playground'
-    Plug 'neovim/nvim-lspconfig' " LSP config
-    Plug 'hrsh7th/nvim-compe' " nvim autocompletion
-    Plug 'hrsh7th/vim-vsnip' " nvim snippets
-    Plug 'rafamadriz/friendly-snippets' " collection of snippets
-    Plug 'hkupty/iron.nvim' " repl support
-    Plug 'junegunn/vim-plug'       " Plugin Manager
-    Plug 'junegunn/gv.vim'         " a git commit browser
-    Plug 'junegunn/goyo.vim'       " distractioness vim
-    Plug 'junegunn/seoul256.vim'   " vim colorscheme
-    Plug 'ayu-theme/ayu-vim'
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    Plug 'junegunn/fzf.vim'        " fuzzy finder vim integration
-        let g:fzf_tags_command = 'ctags -R'
-        let g:fzf_layout = { 'down': '40%' }
-        let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
-    Plug 'junegunn/vim-easy-align' " align
-        vmap <Enter> <Plug>(EasyAlign)
-        nmap ga <Plug>(EasyAlign)
-    Plug 'junegunn/vim-peekaboo'
-    Plug 'tpope/vim-fugitive'      " git in vim
-    Plug 'tpope/vim-commentary'    " comment out lines
-    Plug 'tpope/vim-surround'      " change/add surroudings
-    Plug 'JuliaEditorSupport/julia-vim'
-        let g:latex_to_unicode_auto = 1
-    Plug 'skywind3000/asyncrun.vim'
-    Plug 'mattn/emmet-vim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'nvim-treesitter/playground'
+Plug 'neovim/nvim-lspconfig' " LSP config
+Plug 'hrsh7th/nvim-compe' " nvim autocompletion
+Plug 'junegunn/vim-plug'       " Plugin Manager
+Plug 'junegunn/gv.vim'         " a git commit browser
+Plug 'junegunn/goyo.vim'       " distractioness vim
+Plug 'junegunn/seoul256.vim'   " vim colorscheme
+Plug 'ayu-theme/ayu-vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'        " fuzzy finder vim integration
+    " Mapping selecting mappings
+    nmap <leader><tab> <plug>(fzf-maps-n)
+    xmap <leader><tab> <plug>(fzf-maps-x)
+    omap <leader><tab> <plug>(fzf-maps-o)
+    " Insert mode completion
+    imap <c-x><c-k> <plug>(fzf-complete-word)
+    imap <c-x><c-f> <plug>(fzf-complete-path)
+    imap <c-x><c-l> <plug>(fzf-complete-line)
+    let g:fzf_tags_command = 'ctags -R'
+    let g:fzf_layout = { 'down': '40%' }
+    let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+Plug 'junegunn/vim-easy-align' " align
+    vmap <Enter> <Plug>(EasyAlign)
+    nmap ga <Plug>(EasyAlign)
+Plug 'junegunn/vim-peekaboo'
+Plug 'tpope/vim-fugitive'      " git in vim
+Plug 'tpope/vim-commentary'    " comment out lines
+Plug 'tpope/vim-surround'      " change/add surroudings
+Plug 'hkupty/iron.nvim'
+Plug 'JuliaEditorSupport/julia-vim'
+    let g:latex_to_unicode_auto = 1
 call plug#end()
+packadd termdebug
 
 if has('termguicolors')
     set termguicolors
@@ -47,7 +52,6 @@ endif
 set conceallevel=1 " vimtex
 autocmd FileType python let g:slime_vimterminal_cmd="ipython"
 autocmd FileType r setlocal shiftwidth=2 tabstop=2 softtabstop=2 
-autocmd FileType r imap <c-m> %>%
 
 set number relativenumber " set global settings alongside defaults
 augroup numbertoggle      " switch between relative and norelative depending on focus
