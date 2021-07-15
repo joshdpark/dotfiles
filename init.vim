@@ -7,6 +7,14 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 call plug#begin('~/.vim/plugged') " Call Plugins
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
+    Plug 'nvim-treesitter/playground'
+    Plug 'neovim/nvim-lspconfig'        " LSP config
+    Plug 'hrsh7th/nvim-compe'           " nvim autocompletion
+    Plug 'hrsh7th/vim-vsnip'            " nvim snippets
+    Plug 'rafamadriz/friendly-snippets' " collection of snippets
+    Plug 'hkupty/iron.nvim'             " repl support
+
     Plug 'junegunn/vim-plug'            " Plugin Manager
     Plug 'junegunn/gv.vim'              " a git commit browser
     Plug 'junegunn/goyo.vim'            " distractioness vim
@@ -20,35 +28,29 @@ call plug#begin('~/.vim/plugged') " Call Plugins
         nmap ga <Plug>(EasyAlign)
     Plug 'junegunn/vim-peekaboo'
 
-    Plug 'junegunn/seoul256.vim'        " vim colorschemes
-    Plug 'Shatur/neovim-ayu'
-
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
-    Plug 'nvim-treesitter/playground'
-    Plug 'neovim/nvim-lspconfig'        " LSP config
-    Plug 'hrsh7th/nvim-compe'           " nvim autocompletion
-    Plug 'hrsh7th/vim-vsnip'            " nvim snippets
-    Plug 'rafamadriz/friendly-snippets' " collection of snippets
-    Plug 'hkupty/iron.nvim'             " repl support
-
     Plug 'tpope/vim-fugitive'           " git in vim
     Plug 'tpope/vim-commentary'         " comment out lines
     Plug 'tpope/vim-surround'           " change/add surroudings
     Plug 'tpope/vim-dadbod'             " database connections
     Plug 'tpope/vim-dispatch'
     Plug 'ludovicchabant/vim-gutentags' " automatic tag manager
+    Plug 'Shatur/neovim-ayu'
     Plug 'JuliaEditorSupport/julia-vim'
         let g:latex_to_unicode_auto = 1
+    Plug 'lervag/vimtex'
+        let g:tex_flavor = 'latex'
+        let g:vimtex_view_method='zathura'
+        let g:vimtex_quickfix_mode=0
+        let g:tex_conceal='abdmg'
+        let g:vimtex_compiler_method = 'tectonic'
+    Plug 'vimwiki/vimwiki'
+    Plug 'michal-h21/vim-zettel' 
+        let g:vimwiki_list = [{'path':'~/sync/zettel/', 'auto_tags': 1, 'auto_toc': 1, 'syntax': 'markdown', 'ext': '.md'}]
+        let g:vimwiki_use_mouse = 1
+        let g:zettel_fzf_command = "rg --column --line-number --ignore-case --no-heading --color=always"
     Plug 'skywind3000/asyncrun.vim'
     Plug 'mattn/emmet-vim'
     Plug 'norcalli/nvim-colorizer.lua'
-    Plug 'vimwiki/vimwiki'
-        let g:vimwiki_list = [{'path':'~/usps/notes', 'auto_tags': 1, 'auto_toc': 1,
-                    \ 'syntax':'markdown', 'ext':'.md'}, {"path":"~/journal"}]
-        let g:vimwiki_use_mouse = 1
-        let g:zettel_fzf_command = "rg --column --line-number --ignore-case --no-heading --color=always"
-    Plug 'lervag/vimtex'
-    Plug 'michal-h21/vim-zettel'
 call plug#end()
 packadd termdebug
 
