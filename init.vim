@@ -1,23 +1,16 @@
-let maplocalleader=","
-let mapleader=","
-
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
-if empty(glob(data_dir . '/autoload/plug.vim'))
-  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs / https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
 call plug#begin('~/.vim/plugged') " Call Plugins
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
     Plug 'nvim-treesitter/playground'
     Plug 'neovim/nvim-lspconfig'        " LSP config
-    Plug 'hrsh7th/nvim-compe'           " nvim autocompletion
-    Plug 'hrsh7th/vim-vsnip'            " nvim snippets
-    Plug 'rafamadriz/friendly-snippets' " collection of snippets
-    Plug 'hkupty/iron.nvim'             " repl support
+    Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+    Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'kassio/neoterm'
+    Plug 'metakirby5/codi.vim'
+    Plug 'lewis6991/gitsigns.nvim'
 
     Plug 'junegunn/vim-plug'            " Plugin Manager
     Plug 'junegunn/gv.vim'              " a git commit browser
-    Plug 'junegunn/goyo.vim'            " distractioness vim
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'             " fuzzy finder vim integration
         let g:fzf_tags_command = 'ctags -R'
@@ -60,9 +53,12 @@ if has('termguicolors')
     colorscheme ayu
 endif
 
-set conceallevel=1                                               " vimtex
+let maplocalleader=","
+let mapleader=","
+map Q <C-w>c
 autocmd FileType r setlocal shiftwidth=2 tabstop=2 softtabstop=2 " R shift to two spaces
 
+set conceallevel=1                                               " vimtex
 set number relativenumber " set global settings alongside defaults
 augroup numbertoggle      " switch between relative and norelative depending on focus
   autocmd!
@@ -86,32 +82,10 @@ set tabstop=4                    " use 4 spaces to represent tab
 set softtabstop=4
 set shiftwidth=4                 " number of spaces to use for auto indent
 
-set completeopt=menuone,noselect " set completion for nvim-compe
-
-" use Q to close out of buffers
-map Q <C-w>c
-
-" nvim-compe
-inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <CR>      compe#confirm('<CR>')
-inoremap <silent><expr> <C-e>     compe#close('<C-e>')
-inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
-inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
-
-" NOTE: You can use other key to expand snippet.
-
-" vsnip
-imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
-smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
-" Jump forward or backward
-imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
-smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
-imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
-smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
-
-
+" Lua Configuration
 lua <<EOF
 require'colorizer'.setup()
+require'gitsigns'.setup()
 require'nvim-treesitter.configs'.setup {
     -- Modules and its options go here
     ensure_installed = 'maintained',
@@ -163,46 +137,4 @@ for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
 end
 
-require'compe'.setup {
-  enabled = true;
-  autocomplete = true;
-  debug = false;
-  min_length = 1;
-  preselect = 'enable';
-  throttle_time = 80;
-  source_timeout = 200;
-  incomplete_delay = 400;
-  max_abbr_width = 100;
-  max_kind_width = 100;
-  max_menu_width = 100;
-  documentation = true;
-
-  source = {
-    path = true;
-    buffer = true;
-    calc = true;
-    nvim_lsp = true;
-    nvim_lua = true;
-    vsnip = true;
-    ultisnips = true;
-  };
-}
-
-local iron = require('iron')
-
-iron.core.add_repl_definitions {
-  python = {
-    mycustom = {
-      command = {"mycmd"}
-    }
-  },
-}
-
-iron.core.set_config {
-  preferred = {
-    python = "ipython",
-  },
-  repl_open_cmd = "botright vertical split"
-}
 EOF
-
