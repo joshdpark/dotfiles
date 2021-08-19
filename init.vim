@@ -1,33 +1,35 @@
-call plug#begin('~/.vim/plugged') " Call Plugins
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
-    Plug 'nvim-treesitter/playground'
-    Plug 'neovim/nvim-lspconfig'        " LSP config
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    endif
+call plug#begin('~/.vim/plugged')
+    Plug 'neovim/nvim-lspconfig'
     Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
     Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
     Plug 'nvim-lua/plenary.nvim'
     Plug 'kassio/neoterm'
-    Plug 'metakirby5/codi.vim'
-    Plug 'lewis6991/gitsigns.nvim'
+    Plug 'Shatur/neovim-ayu'
 
-    Plug 'junegunn/vim-plug'            " Plugin Manager
-    Plug 'junegunn/gv.vim'              " a git commit browser
+    Plug 'junegunn/vim-plug' 
+    Plug 'junegunn/gv.vim'    
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    Plug 'junegunn/fzf.vim'             " fuzzy finder vim integration
+    Plug 'junegunn/fzf.vim'    
         let g:fzf_tags_command = 'ctags -R'
         let g:fzf_layout = { 'down': '40%' }
         let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
-    Plug 'junegunn/vim-easy-align'      " align text
+    Plug 'junegunn/vim-easy-align'
         vmap <Enter> <Plug>(EasyAlign)
         nmap ga <Plug>(EasyAlign)
     Plug 'junegunn/vim-peekaboo'
 
-    Plug 'tpope/vim-fugitive'           " git in vim
-    Plug 'tpope/vim-commentary'         " comment out lines
-    Plug 'tpope/vim-surround'           " change/add surroudings
-    Plug 'tpope/vim-dadbod'             " database connections
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-commentary'
+    Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-dadbod'
+    Plug 'kristijanhusak/vim-dadbod-ui'
     Plug 'tpope/vim-dispatch'
-    Plug 'ludovicchabant/vim-gutentags' " automatic tag manager
-    Plug 'Shatur/neovim-ayu'
+    Plug 'ludovicchabant/vim-gutentags'
     Plug 'JuliaEditorSupport/julia-vim'
         let g:latex_to_unicode_auto = 1
     Plug 'lervag/vimtex'
@@ -49,7 +51,7 @@ packadd termdebug
 
 if has('termguicolors')
     set termguicolors
-    lua vim.g.ayu_mirage = true
+    set background=light
     colorscheme ayu
 endif
 
@@ -85,12 +87,6 @@ set shiftwidth=4                 " number of spaces to use for auto indent
 " Lua Configuration
 lua <<EOF
 require'colorizer'.setup()
-require'gitsigns'.setup()
-require'nvim-treesitter.configs'.setup {
-    -- Modules and its options go here
-    ensure_installed = 'maintained',
-    highlight = { enable = true },
-}
 require'lspconfig'.pylsp.setup{}
 require'lspconfig'.julials.setup{}
 require'lspconfig'.r_language_server.setup{}
