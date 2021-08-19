@@ -57,12 +57,15 @@ endif
 
 let maplocalleader=","
 let mapleader=","
+tnoremap <C-Space> <C-\><C-n>
+nnoremap <F4> :TREPLSendLine<CR>
+vnoremap <F4> :TREPLSendSelection<CR>
 map Q <C-w>c
 autocmd FileType r setlocal shiftwidth=2 tabstop=2 softtabstop=2 " R shift to two spaces
 
-set conceallevel=1                                               " vimtex
-set number relativenumber " set global settings alongside defaults
-augroup numbertoggle      " switch between relative and norelative depending on focus
+set conceallevel=1
+set number relativenumber
+augroup numbertoggle
   autocmd!
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
