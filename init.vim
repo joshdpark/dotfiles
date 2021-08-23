@@ -24,6 +24,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'junegunn/vim-peekaboo'
 
     Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-dadbod'
@@ -58,7 +59,8 @@ endif
 let maplocalleader=","
 let mapleader=","
 tnoremap <C-Space> <C-\><C-n>
-nnoremap <F4> :TREPLSendLine<CR>
+nnoremap <F4><F4> :TREPLSendLine<CR>
+nmap <F4> <Plug>(neoterm-repl-send)
 vnoremap <F4> :TREPLSendSelection<CR>
 map Q <C-w>c
 autocmd FileType r setlocal shiftwidth=2 tabstop=2 softtabstop=2 " R shift to two spaces
