@@ -80,7 +80,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# connect to a port for plots
+# connect to a port for plots 
 export DISPLAY=`grep -oP "(?<=nameserver ).+" /etc/resolv.conf`:0.0
 
 # fzf completions
