@@ -2,14 +2,8 @@ window:
   dimensions:
     columns: 100
     lines: 85
-
-  # padding:
-  #   x: 
-  #   y: 
-
   dynamic_padding: false
   decorations: none
-
   startup_mode: Maximized
 
 scrolling:
@@ -19,37 +13,60 @@ scrolling:
 font:
   normal:
     family: JetBrains Mono
+    style: Regular
   bold:
     family: JetBrains Mono
+    style: Bold
   italic:
     family: JetBrains Mono
-
-  size: 7
+    style: Italic
+  size: 12
   
-colors:
-  # Default colors
-  primary:
-    background: '0x3a3a3a'
-    foreground: '0xd0d0d0'
+schemes:
+  seoul256_light: &seoul_light
+    primary:
+      background: '#dadada'
+      foreground: '#4e4e4e'
+    normal:
+      black:   '#4e4e4e'
+      red:     '#af5f5f'
+      green:   '#5f885f'
+      yellow:  '#af8760'
+      blue:    '#5f87ae'
+      magenta: '#875f87'
+      cyan:    '#5f8787'
+      white:   '#e4e4e4'
+    bright:
+      black:   '#3a3a3a'
+      red:     '#870100'
+      green:   '#005f00'
+      yellow:  '#d8865f'
+      blue:    '#0087af'
+      magenta: '#87025f'
+      cyan:    '#008787'
+      white:   '#eeeeee'
 
-  # Normal colors
-  normal:
-    black:   '0x4e4e4e'
-    red:     '0xd68787'
-    green:   '0x5f865f'
-    yellow:  '0xd8af5f'
-    blue:    '0x85add4'
-    magenta: '0xd7afaf'
-    cyan:    '0x87afaf'
-    white:   '0xd0d0d0'
+  ayu_mirage: &ayu_mirage
+    primary:
+      background: '#202734'
+      foreground: '#CBCCC6'
+    normal:
+      black: '#191E2A'
+      red: '#FF3333'
+      green: '#BAE67E'
+      yellow: '#FFA759'
+      blue: '#73D0FF'
+      magenta: '#FFD580'
+      cyan: '#95E6CB'
+      white: '#C7C7C7'
+    bright:
+      black: '#686868'
+      red: '#F27983'
+      green: '#A6CC70'
+      yellow: '#FFCC66'
+      blue: '#5CCFE6'
+      magenta: '#FFEE99'
+      cyan: '#95E6CB'
+      white: '#FFFFFF'
 
-  # Bright colors
-  bright:
-    black:   '0x626262'
-    red:     '0xd75f87'
-    green:   '0x87af87'
-    yellow:  '0xffd787'
-    blue:    '0xadd4fb'
-    magenta: '0xffafaf'
-    cyan:    '0x87d7d7'
-    white:   '0xe4e4e4'
+# colors: *seoul_light
