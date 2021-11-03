@@ -1,0 +1,3 @@
+#!/usr/bin/env Rscript
+out <- styler::style_text(readLines('stdin'), scope = "line_breaks")
+write(out, stdout())
