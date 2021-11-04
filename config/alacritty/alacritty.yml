@@ -2,7 +2,10 @@ window:
   dimensions:
     columns: 100
     lines: 85
-  dynamic_padding: false
+  padding:
+    x: 5
+    y: 5
+  dynamic_padding: true
   decorations: none
   startup_mode: Maximized
 
@@ -69,4 +72,4 @@ schemes:
       cyan: '#95E6CB'
       white: '#FFFFFF'
 
-# colors: *seoul_light
+colors: *seoul_light

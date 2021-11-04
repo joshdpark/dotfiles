@@ -81,7 +81,9 @@ if ! shopt -oq posix; then
 fi
 
 # connect to a port for plots 
-export DISPLAY=`grep -oP "(?<=nameserver ).+" /etc/resolv.conf`:0.0
+if cat /proc/version | grep Microsoft; then
+    export DISPLAY=`grep -oP "(?<=nameserver ).+" /etc/resolv.conf`:0.0
+fi
 
 # fzf completions
 source /usr/share/doc/fzf/examples/key-bindings.bash

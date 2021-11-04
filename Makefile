@@ -1,8 +1,10 @@
+BACKUP=~/.bck
+
 all: backup install
 
 backup:
-	mkdir ~/.bck
-	cp ~/.vimrc ~/.bashrc ~/.bck
+	cp ~/.vimrc ~/.vimrc.bk
+	cp ~/.bashrc ~/.bashrc.bk
 
 install:
 	cp vimrc ~/.vimrc
