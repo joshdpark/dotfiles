@@ -75,4 +75,4 @@ schemes:
 colors: *seoul_light
 
 key_bindings:
-    - { key: N,   mods: Control, action: SpawnNewInstance }
+    - { key: N,   mods: Control|Shift, action: SpawnNewInstance }
