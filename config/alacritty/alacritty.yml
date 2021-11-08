@@ -73,3 +73,6 @@ schemes:
       white: '#FFFFFF'
 
 colors: *seoul_light
+
+key_bindings:
+    - { key: Return,   mods: Control|Shift, action: SpawnNewInstance }
