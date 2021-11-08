@@ -83,17 +83,16 @@ fi
 # connect to a port for plots 
 if cat /proc/version | grep Microsoft; then
     export DISPLAY=`grep -oP "(?<=nameserver ).+" /etc/resolv.conf`:0.0
+    # screen variables for WSL
+    export SCREENDIR=$HOME/.screen
 fi
 
-# fzf completions
-source /usr/share/doc/fzf/examples/key-bindings.bash
-source /usr/share/doc/fzf/examples/completion.bash
 
 # postgres database variables
 export PGDATABASE=incentdb
 export PGUSER=data_lake_analyst
 export PGHOST=localhost
 export PGPORT=5555
+export PGOPTIONS="--search_path=data_lake_workspace,public"
 
-# screen variables for WSL
-export SCREENDIR=$HOME/.screen
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
