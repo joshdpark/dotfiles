@@ -9,6 +9,7 @@ endif
 " Call Plugins
 call plug#begin('~/.vim/plugged')
     Plug 'junegunn/vim-plug'
+    Plug 'junegunn/fzf'
     Plug 'junegunn/vim-easy-align' 
         vmap <Enter> <Plug>(EasyAlign)
         nmap ga <Plug>(EasyAlign)
@@ -22,12 +23,10 @@ call plug#begin('~/.vim/plugged')
         nmap <F4><F4> <Plug>SlimeParagraphSend
     Plug 'vimwiki/vimwiki'
     Plug 'JuliaEditorSupport/julia-vim'
-        let g:latex_to_unicode_tab = "off"
+    Plug '18alantom/zettel.vim'
 call plug#end()
 
 colorscheme peachpuff
-let maplocalleader=","
-let mapleader=","
 map Q <C-w>c
 packadd! matchit
 augroup psql
@@ -36,7 +35,7 @@ augroup psql
     autocmd FileType pgsql setlocal formatprg=pg_format\ -
 augroup END
 
-set conceallevel=1
+set conceallevel=2
 " set global settings alongside defaults
 set number relativenumber
 " switch back and forth between relative and norelative depending on focus
@@ -46,22 +45,13 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 set lazyredraw
-set undofile
 set incsearch
 set ignorecase
 set tags=./tags;/
-
-" Search down into subfolders
 set path+=**
-
-" More natural split openings
+set wildignore+=.git/**
 set splitright
 set splitbelow
-
-"Automatically opens up explorer at the side
-let g:netrw_liststyle = 3
-let g:netrw_banner = 0
-
 set expandtab                  " enter spaces when tab is pressed
 set textwidth=80               " break lines when line length increases
 set softtabstop=4
