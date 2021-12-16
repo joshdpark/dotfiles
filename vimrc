@@ -10,9 +10,6 @@ endif
 call plug#begin('~/.vim/plugged')
     Plug 'junegunn/vim-plug'
     Plug 'junegunn/fzf'
-    Plug 'junegunn/vim-easy-align' 
-        vmap <Enter> <Plug>(EasyAlign)
-        nmap ga <Plug>(EasyAlign)
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-dispatch'
@@ -26,14 +23,19 @@ call plug#begin('~/.vim/plugged')
     Plug '18alantom/zettel.vim'
 call plug#end()
 
+
 colorscheme peachpuff
 map Q <C-w>c
+inoremap <F3> %>%
 packadd! matchit
 augroup psql
     autocmd!
     autocmd FileType sql setlocal filetype=pgsql
     autocmd FileType pgsql setlocal formatprg=pg_format\ -
 augroup END
+
+highlight TrailingWhitespace ctermbg=magenta
+call matchadd("TrailingWhitespace", '\v\s+$')
 
 set conceallevel=2
 " set global settings alongside defaults
@@ -53,7 +55,7 @@ set wildignore+=.git/**
 set splitright
 set splitbelow
 set expandtab                  " enter spaces when tab is pressed
-set textwidth=80               " break lines when line length increases
+set textwidth=100               " break lines when line length increases
 set softtabstop=4
 set shiftwidth=4               " number of spaces to use for auto indent
 set autoindent                 " copy indent from current line when starting a newline
