@@ -9,24 +9,18 @@ endif
 " Call Plugins
 call plug#begin('~/.vim/plugged')
     Plug 'junegunn/vim-plug'
-    Plug 'junegunn/fzf'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-dispatch'
     Plug 'jpalardy/vim-slime'
-        let g:slime_no_mappings = 1
-        nmap <F4> <Plug>SlimeMotionSend
-        xmap <F4> <Plug>SlimeRegionSend
-        nmap <F4><F4> <Plug>SlimeParagraphSend
-    Plug 'vimwiki/vimwiki'
     Plug 'JuliaEditorSupport/julia-vim'
     Plug '18alantom/zettel.vim'
 call plug#end()
 
-
 colorscheme peachpuff
 map Q <C-w>c
 inoremap <F3> %>%
+let r_syntax_fun_pattern = 1
 packadd! matchit
 augroup psql
     autocmd!
@@ -37,6 +31,7 @@ augroup END
 highlight TrailingWhitespace ctermbg=magenta
 call matchadd("TrailingWhitespace", '\v\s+$')
 
+set dir=~/tmp
 set conceallevel=2
 " set global settings alongside defaults
 set number relativenumber
