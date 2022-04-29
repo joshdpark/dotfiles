@@ -1,13 +1,8 @@
 window:
-  dimensions:
-    columns: 100
-    lines: 85
   padding:
     x: 5
     y: 5
   dynamic_padding: true
-  decorations: none
-  startup_mode: Maximized
 
 scrolling:
   history: 1000
@@ -16,69 +11,40 @@ scrolling:
 font:
   normal:
     family: JetBrains Mono
-    style: Regular
   bold:
     family: JetBrains Mono
-    style: Bold
   italic:
     family: JetBrains Mono
-    style: Italic
-  size: 12
-  
-schemes:
-  seoul256_light: &seoul_light
-    primary:
-      background: '#dadada'
-      foreground: '#4e4e4e'
-    normal:
-      black:   '#4e4e4e'
-      red:     '#af5f5f'
-      green:   '#5f885f'
-      yellow:  '#af8760'
-      blue:    '#5f87ae'
-      magenta: '#875f87'
-      cyan:    '#5f8787'
-      white:   '#e4e4e4'
-    bright:
-      black:   '#3a3a3a'
-      red:     '#870100'
-      green:   '#005f00'
-      yellow:  '#d8865f'
-      blue:    '#0087af'
-      magenta: '#87025f'
-      cyan:    '#008787'
-      white:   '#eeeeee'
+  size: 14
 
-  ayu_mirage: &ayu_mirage
+schemes:
+  paper: &paper
     primary:
-      background: '#202734'
-      foreground: '#CBCCC6'
+      background: '#f2eede'
+      foreground: '#000000'
     normal:
-      black: '#191E2A'
-      red: '#FF3333'
-      green: '#BAE67E'
-      yellow: '#FFA759'
-      blue: '#73D0FF'
-      magenta: '#FFD580'
-      cyan: '#95E6CB'
-      white: '#C7C7C7'
+      black:   '#000000'
+      red:     '#cc3e28'
+      green:   '#216609'
+      yellow:  '#b58900'
+      blue:    '#1e6fcc'
+      magenta: '#5c21a5'
+      cyan:    '#158c86'
+      white:   '#aaaaaa'
     bright:
-      black: '#686868'
-      red: '#F27983'
-      green: '#A6CC70'
-      yellow: '#FFCC66'
-      blue: '#5CCFE6'
-      magenta: '#FFEE99'
-      cyan: '#95E6CB'
-      white: '#FFFFFF'
+      black:   '#555555'
+      red:     '#cc3e28'
+      green:   '#216609'
+      yellow:  '#b58900'
+      blue:    '#1e6fcc'
+      magenta: '#5c21a5'
+      cyan:    '#158c86'
+      white:   '#aaaaaa'
 
   tokyo-night-storm: &tokyo-night-storm
-    # Default colors
     primary:
       background: '0x24283b'
       foreground: '0xa9b1d6'
-
-    # Normal colors
     normal:
       black:   '0x32344a'
       red:     '0xf7768e'
@@ -88,8 +54,6 @@ schemes:
       magenta: '0xad8ee6'
       cyan:    '0x449dab'
       white:   '0x9699a8'
-
-    # Bright colors
     bright:
       black:   '0x444b6a'
       red:     '0xff7a93'
@@ -100,7 +64,7 @@ schemes:
       cyan:    '0x0db9d7'
       white:   '0xacb0d0'
 
-colors: *tokyo-night-storm
+colors: *paper
 
 key_bindings:
     - { key: N,   mods: Control|Shift, action: SpawnNewInstance }
