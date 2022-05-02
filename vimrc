@@ -12,9 +12,10 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-dispatch'
-    Plug 'jpalardy/vim-slime'
-    Plug 'JuliaEditorSupport/julia-vim'
-    Plug '18alantom/zettel.vim'
+    Plug 'axvr/zepl.vim'
+    let g:repl_config = { 'r': {'cmd':'R'} }
+    nmap <c-c> gz
+    nmap <c-c><c-c> gzap}
 call plug#end()
 
 colorscheme peachpuff
@@ -31,26 +32,15 @@ augroup END
 highlight TrailingWhitespace ctermbg=magenta
 call matchadd("TrailingWhitespace", '\v\s+$')
 
+set nowrap lazyredraw incsearch ignorecase splitright splitbelow
 set dir=~/tmp
 set conceallevel=2
-" set global settings alongside defaults
-set number relativenumber
-" switch back and forth between relative and norelative depending on focus
-augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-augroup END
-set lazyredraw
-set incsearch
-set ignorecase
 set tags=./tags;/
 set path+=**
 set wildignore+=.git/**
-set splitright
-set splitbelow
-set expandtab                  " enter spaces when tab is pressed
-set textwidth=100               " break lines when line length increases
+set expandtab        " enter spaces when tab is pressed
+set textwidth=80    " break lines when line length increases
 set softtabstop=4
-set shiftwidth=4               " number of spaces to use for auto indent
-set autoindent                 " copy indent from current line when starting a newline
+set shiftwidth=4     " number of spaces to use for auto indent
+set autoindent       " copy indent from current line when starting a newline
+set regexpengine=2   " set the default regexp engine (mac will freeze up with default)
