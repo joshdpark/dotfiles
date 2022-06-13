@@ -10,7 +10,7 @@ endif
 call plug#begin('~/.vim/plugged')
     Plug 'junegunn/vim-plug'
     Plug 'tpope/vim-commentary'
-    Plug 'tpope/vim-surround'
+    Plug 'machakann/vim-sandwich'
     Plug 'tpope/vim-dispatch'
     Plug 'axvr/zepl.vim'
     let g:repl_config = { 'r': {'cmd':'R'} }
