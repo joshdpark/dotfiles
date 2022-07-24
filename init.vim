@@ -24,6 +24,7 @@ set regexpengine=2   " set the default regexp engine (mac will freeze up with de
 call plug#begin('~/.vim/plugged')
     Plug 'junegunn/vim-plug'
     Plug 'neovim/nvim-lspconfig'
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
     Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
     Plug 'tpope/vim-commentary'
     Plug 'machakann/vim-sandwich'
@@ -63,11 +64,11 @@ vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  -- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  local bufopts = { noremap=true, silent=true, buffer=bufnr}
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
@@ -82,7 +83,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
+  vim.keymap.set('n', '<space>f', vim.lsp.buf.format, bufopts)
 end
 
 local lsp_flags = {
@@ -93,9 +94,35 @@ require('lspconfig')['hls'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
 }
-require('lspconfig')['r_language_server'].setup{
+require('lspconfig')['pylsp'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
 }
 
+require'nvim-treesitter.configs'.setup {
+  -- A list of parser names, or "all"
+  ensure_installed = {"lua", "vim", "haskell", "python", "c"},
+
+  -- Install parsers synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+
+  -- List of parsers to ignore installing (for "all")
+  ignore_install = {},
+
+  highlight = {
+    enable = true, -- `false` will disable the whole extension
+    -- disable = { "c", "rust" },
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "<CR>",
+      node_incremental = "<CR>",
+      scope_incremental = "<TAB>",
+      node_decremental = "<S-TAB>",
+    },
+  }
+}
 EOF
