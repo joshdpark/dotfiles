@@ -19,5 +19,5 @@
   lctl lalt lmet           @sp            rmet ralt)
 
 (defalias
-  sp (tap-hold 200 200 spc ctl)
-  ae (tap-hold 200 200 esc alt))
+  sp (tap-hold-press 200 200 spc ctl)
+  ae (tap-hold-press 200 200 esc alt))

@@ -1,0 +1,27 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Joshua Park
+	email = josh@otter-health.com
+[pull]
+	rebase = true
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[init]
+	defaultBranch = main
+[diff]
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
+[push]
+	default = simple
+	autoSetupRemote = true
+	followTags = true
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
+[help]
+	autocorrect = prompt
